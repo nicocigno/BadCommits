@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <cstring>
+#include <vector>
 
 
 class CommitData{
@@ -39,3 +41,15 @@ class CommitData{
     }
 
 };
+
+
+std::map<std::string, int> countStringOccurrences(const std::vector<std::string>& vec) {
+    std::map<std::string, int> counts;
+
+    for (const std::string& str : vec) {
+        // Increment the count for the current string
+        counts[str]++;
+    }
+
+    return counts;
+}
