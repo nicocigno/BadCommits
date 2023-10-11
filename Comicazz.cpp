@@ -6,13 +6,14 @@
 
 int main(int argc, char* argv[]){
 
-    if (argc != 2) {
-        std::cerr << "Oh forgive me, you initiated me but I didn't show up. My name is Comicazz, you're probably wondering 'What the fuck is this stuff?'. The answer is very simple, a bounty hunter. A big problem afflicts our society, the commits done like a dog. Relaunch me by specifying an svn path, I will find the bad boys for you.\n Write in my folder command prompt 'Comicazz.exe svn_url_path'" <<  std::endl;
+    if (argc != 3) {
+        std::cerr << "Oh forgive me, you initiated me but I didn't show up. My name is Comicazz, you're probably wondering 'What the fuck is this stuff?'. The answer is very simple, a bounty hunter. A big problem afflicts our society, the commits done like a dog. Relaunch me by specifying an svn path, I will find the bad boys for you.\n Write in my folder command prompt 'Comicazz.exe svn_url_path word_to_search'" <<  std::endl;
         return 1; // Return an error code
     }
     std::string svn_url(argv[1]);
+    std::string search = argv[2];
    
-    std::string svnbase = "svn log -v --search \"report\" " + svn_url ;
+    std::string svnbase = "svn log -v --search \"" + search + "\" " + svn_url ;
     const char* svnCommand = svnbase.c_str();
 
     std::cout << svnbase << std::endl;
@@ -73,7 +74,7 @@ int main(int argc, char* argv[]){
 
     std::cout << "######################## RESULTS ########################" << std::endl;
     for (std::map<std::string, int>::iterator it = stringCounts.begin(); it != stringCounts.end(); ++it) {
-        std::cout << "Tester: " << it->first << ", Bad Commits: " << it->second << std::endl;
+        std::cout << "IDname: " << it->first << ", Bad Commits: " << it->second << std::endl;
     }
 
 
